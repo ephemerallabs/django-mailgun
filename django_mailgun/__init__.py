@@ -89,7 +89,7 @@ class MailgunBackend(BaseEmailBackend):
 
         if response.status_code != 200:
             if not self.fail_silently:
-                raise MailgunAPIError(response)
+                raise MailgunAPIError('%s: %s' % (response.status_code, response.content,))
             return False
 
         return True
